@@ -14,7 +14,7 @@
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
+            { 
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -144,7 +144,7 @@
             this.comboBox_models.Name = "comboBox_models";
             this.comboBox_models.Size = new System.Drawing.Size(241, 28);
             this.comboBox_models.TabIndex = 32;
-            this.comboBox_models.SelectedIndexChanged += new System.EventHandler(this.comboBox_models_SelectedIndexChanged);
+            
             // 
             // Car
             // 

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.tab_bakımAraclar = new System.Windows.Forms.TabControl();
             this.tab_users = new System.Windows.Forms.TabPage();
+            this.exit_button = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.refreshbox_users = new System.Windows.Forms.PictureBox();
             this.filter_users = new System.Windows.Forms.Button();
@@ -42,7 +43,7 @@
             this.refreshbox_customer = new System.Windows.Forms.PictureBox();
             this.filter_customer = new System.Windows.Forms.Button();
             this.txtFilter_customer = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_add_customer = new System.Windows.Forms.Button();
             this.data_customers = new System.Windows.Forms.DataGridView();
             this.tab_cars = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -97,13 +98,14 @@
             this.tab_bakımAraclar.Location = new System.Drawing.Point(12, 12);
             this.tab_bakımAraclar.Name = "tab_bakımAraclar";
             this.tab_bakımAraclar.SelectedIndex = 0;
-            this.tab_bakımAraclar.Size = new System.Drawing.Size(1673, 985);
+            this.tab_bakımAraclar.Size = new System.Drawing.Size(1989, 985);
             this.tab_bakımAraclar.TabIndex = 0;
             this.tab_bakımAraclar.Tag = "";
             // 
             // tab_users
             // 
             this.tab_users.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tab_users.Controls.Add(this.exit_button);
             this.tab_users.Controls.Add(this.label3);
             this.tab_users.Controls.Add(this.refreshbox_users);
             this.tab_users.Controls.Add(this.filter_users);
@@ -113,9 +115,22 @@
             this.tab_users.Location = new System.Drawing.Point(4, 29);
             this.tab_users.Name = "tab_users";
             this.tab_users.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_users.Size = new System.Drawing.Size(1665, 952);
+            this.tab_users.Size = new System.Drawing.Size(1981, 952);
             this.tab_users.TabIndex = 0;
             this.tab_users.Text = "Kullanıcılar";
+            // 
+            // exit_button
+            // 
+            this.exit_button.BackColor = System.Drawing.Color.IndianRed;
+            this.exit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.exit_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exit_button.Location = new System.Drawing.Point(1185, 26);
+            this.exit_button.Name = "exit_button";
+            this.exit_button.Size = new System.Drawing.Size(297, 69);
+            this.exit_button.TabIndex = 10;
+            this.exit_button.Text = "Çıkış ";
+            this.exit_button.UseVisualStyleBackColor = false;
+            this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
             // 
             // label3
             // 
@@ -174,7 +189,7 @@
             this.dataUser.Name = "dataUser";
             this.dataUser.RowHeadersWidth = 62;
             this.dataUser.RowTemplate.Height = 28;
-            this.dataUser.Size = new System.Drawing.Size(1643, 828);
+            this.dataUser.Size = new System.Drawing.Size(1925, 828);
             this.dataUser.TabIndex = 0;
             // 
             // tab_owners
@@ -184,12 +199,12 @@
             this.tab_owners.Controls.Add(this.refreshbox_customer);
             this.tab_owners.Controls.Add(this.filter_customer);
             this.tab_owners.Controls.Add(this.txtFilter_customer);
-            this.tab_owners.Controls.Add(this.button2);
+            this.tab_owners.Controls.Add(this.button_add_customer);
             this.tab_owners.Controls.Add(this.data_customers);
             this.tab_owners.Location = new System.Drawing.Point(4, 29);
             this.tab_owners.Name = "tab_owners";
             this.tab_owners.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_owners.Size = new System.Drawing.Size(1665, 952);
+            this.tab_owners.Size = new System.Drawing.Size(1981, 952);
             this.tab_owners.TabIndex = 1;
             this.tab_owners.Text = "Müşteriler";
             // 
@@ -231,16 +246,16 @@
             this.txtFilter_customer.Size = new System.Drawing.Size(199, 26);
             this.txtFilter_customer.TabIndex = 7;
             // 
-            // button2
+            // button_add_customer
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button2.Location = new System.Drawing.Point(880, 48);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 48);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Müşteri Ekle";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_add_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button_add_customer.Location = new System.Drawing.Point(880, 48);
+            this.button_add_customer.Name = "button_add_customer";
+            this.button_add_customer.Size = new System.Drawing.Size(128, 48);
+            this.button_add_customer.TabIndex = 1;
+            this.button_add_customer.Text = "Müşteri Ekle";
+            this.button_add_customer.UseVisualStyleBackColor = false;
+            this.button_add_customer.Click += new System.EventHandler(this.button_add_customer_Click);
             // 
             // data_customers
             // 
@@ -264,7 +279,7 @@
             this.tab_cars.Location = new System.Drawing.Point(4, 29);
             this.tab_cars.Name = "tab_cars";
             this.tab_cars.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_cars.Size = new System.Drawing.Size(1665, 952);
+            this.tab_cars.Size = new System.Drawing.Size(1981, 952);
             this.tab_cars.TabIndex = 2;
             this.tab_cars.Text = "Arabalar";
             // 
@@ -331,7 +346,7 @@
             this.tab_maintenance.Location = new System.Drawing.Point(4, 29);
             this.tab_maintenance.Name = "tab_maintenance";
             this.tab_maintenance.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_maintenance.Size = new System.Drawing.Size(1665, 952);
+            this.tab_maintenance.Size = new System.Drawing.Size(1981, 952);
             this.tab_maintenance.TabIndex = 3;
             this.tab_maintenance.Text = "Bakım Listeleri";
             // 
@@ -417,7 +432,7 @@
             this.tabBakımAraclar.Location = new System.Drawing.Point(4, 29);
             this.tabBakımAraclar.Name = "tabBakımAraclar";
             this.tabBakımAraclar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBakımAraclar.Size = new System.Drawing.Size(1665, 952);
+            this.tabBakımAraclar.Size = new System.Drawing.Size(1981, 952);
             this.tabBakımAraclar.TabIndex = 4;
             this.tabBakımAraclar.Text = "Bakımda Olan Araçlar";
             // 
@@ -440,7 +455,7 @@
             this.maintenanceData.Name = "maintenanceData";
             this.maintenanceData.RowHeadersWidth = 62;
             this.maintenanceData.RowTemplate.Height = 28;
-            this.maintenanceData.Size = new System.Drawing.Size(1653, 816);
+            this.maintenanceData.Size = new System.Drawing.Size(1972, 816);
             this.maintenanceData.TabIndex = 0;
             this.maintenanceData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.maintenanceData_CellContentClick);
             // 
@@ -454,7 +469,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1665, 952);
+            this.tabPage1.Size = new System.Drawing.Size(1981, 952);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "Bakım Yapılan Araçlar";
             // 
@@ -496,7 +511,7 @@
             this.past_datagridview.Name = "past_datagridview";
             this.past_datagridview.RowHeadersWidth = 62;
             this.past_datagridview.RowTemplate.Height = 28;
-            this.past_datagridview.Size = new System.Drawing.Size(1653, 815);
+            this.past_datagridview.Size = new System.Drawing.Size(1969, 815);
             this.past_datagridview.TabIndex = 0;
             this.past_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Final_datagridview_CellContentClick);
             // 
@@ -505,7 +520,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1697, 1009);
+            this.ClientSize = new System.Drawing.Size(2013, 1004);
             this.Controls.Add(this.tab_bakımAraclar);
             this.Name = "Menu";
             this.Text = "Menu";
@@ -549,7 +564,7 @@
         private System.Windows.Forms.DataGridView data_customers;
         private System.Windows.Forms.DataGridView dataCar;
         private System.Windows.Forms.DataGridView dataMaintenance;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_add_customer;
         private System.Windows.Forms.Button filter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox_maintenance;
@@ -576,5 +591,6 @@
         private System.Windows.Forms.Button Final_search;
         private System.Windows.Forms.TextBox txt_past_filter;
         private System.Windows.Forms.DataGridView past_datagridview;
+        private System.Windows.Forms.Button exit_button;
     }
 }

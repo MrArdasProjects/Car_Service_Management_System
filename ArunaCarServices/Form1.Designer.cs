@@ -37,17 +37,18 @@
             // 
             // btn_login
             // 
+            this.btn_login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_login.Location = new System.Drawing.Point(366, 290);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(104, 47);
             this.btn_login.TabIndex = 0;
             this.btn_login.Text = "Giriş";
-            this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // txt_username
             // 
-            this.txt_username.BackColor = System.Drawing.SystemColors.Info;
+            this.txt_username.BackColor = System.Drawing.Color.White;
             this.txt_username.Location = new System.Drawing.Point(267, 165);
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(313, 26);
@@ -55,7 +56,7 @@
             // 
             // txt_password
             // 
-            this.txt_password.BackColor = System.Drawing.SystemColors.Info;
+            this.txt_password.BackColor = System.Drawing.Color.White;
             this.txt_password.Location = new System.Drawing.Point(267, 226);
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(313, 26);

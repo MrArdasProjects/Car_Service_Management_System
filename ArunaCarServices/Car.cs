@@ -36,6 +36,7 @@ namespace ArunaCarServices
         {
             if (carID > 0) // Eğer carID değeri varsa (güncelleme işlemi)
             {
+
                 add_car.Visible = false; // Ekleme butonunu gizle
                 update_car.Visible = true;  // Güncelleme butonunu göster
             }
@@ -110,9 +111,6 @@ namespace ArunaCarServices
            
 
 
-
-
-
         }
         public void SetBilgiler(string plaka, string model, string uretimYili, string color, string km, int id)
         {
@@ -170,9 +168,6 @@ namespace ArunaCarServices
             
         }
 
-        private void comboBox_models_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }

@@ -139,7 +139,6 @@ namespace ArunaCarServices
             btnUpdateColumn3.Name = "Bakımı Bitir";
             btnUpdateColumn3.UseColumnTextForButtonValue = true;
             maintenanceData.Columns.Add(btnUpdateColumn3);
-
             maintenanceData.CellContentClick += new DataGridViewCellEventHandler(maintenanceData_CellContentClick);
 
         }
@@ -354,7 +353,7 @@ namespace ArunaCarServices
 
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_add_customer_Click(object sender, EventArgs e)
         {
 
             {
@@ -392,13 +391,7 @@ namespace ArunaCarServices
 
             conn.Close();
 
-
-
         }
-
-
-
-
 
         private void DeleteUser(int userID)
         {
@@ -469,16 +462,11 @@ namespace ArunaCarServices
             }
             else
             {
-                // Kullanıcı plaka numarası girmeden önce bir uyarı verebilirsiniz.
+                // Kullanıcı plaka numarası girmeden önce bir uyarı.
                 MessageBox.Show("Lütfen plaka numarasını girin.");
             }
 
         }
-
-
-
-
-
 
         private void refreshbox_car_Click(object sender, EventArgs e)
         {
@@ -821,19 +809,15 @@ namespace ArunaCarServices
         }
 
 
-
-
-
-
-
         public void bakımData()
         {
-            string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, co.last_name AS owner_lastname, co.phone AS owner_phone, co.mail AS owner_mail, co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım " +
+            string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, " +
+    $"co.last_name AS owner_lastname, co.phone AS owner_phone, co.mail AS owner_mail, co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım " +
     $"FROM CarMaintenance cm " +
     $"JOIN Car c ON cm.CarID = c.ID " +
     $"JOIN CarOwner co ON c.OwnerID = co.ID " +
-      $"JOIN Users u ON cm.UserID = u.ID " +
-      $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
+    $"JOIN Users u ON cm.UserID = u.ID " +
+    $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
     $"WHERE cm.status = 1";
 
             SqlConnection conn = new SqlConnection(@"Data Source=Matebook16s\MSSQLSERVER01;Initial Catalog=ARUNA; User ID = admin; Password = admin; Integrated Security = True");
@@ -903,12 +887,13 @@ namespace ArunaCarServices
         }
         private void dataPastMaintenance()
         {
-            string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, co.last_name AS owner_lastname, co.phone AS owner_phone, co.mail AS owner_mail, co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım " +
+            string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, co.last_name AS owner_lastname, " +
+    $"co.phone AS owner_phone, co.mail AS owner_mail, co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım, cm.Next_Maintenance AS Bir_Sonraki_Bakım_Tarih " +
     $"FROM CarMaintenance cm " +
     $"JOIN Car c ON cm.CarID = c.ID " +
     $"JOIN CarOwner co ON c.OwnerID = co.ID " +
-      $"JOIN Users u ON cm.UserID = u.ID " +
-      $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
+    $"JOIN Users u ON cm.UserID = u.ID " +
+    $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
     $"WHERE cm.status = 0";
 
             SqlConnection conn = new SqlConnection(@"Data Source=Matebook16s\MSSQLSERVER01;Initial Catalog=ARUNA; User ID = admin; Password = admin; Integrated Security = True");
@@ -937,12 +922,12 @@ namespace ArunaCarServices
             if (!string.IsNullOrEmpty(plakaFilter))
             {
                 // Filtreleme sorgusu oluştur
-                string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, co.last_name AS owner_lastname, co.phone AS owner_phone, co.mail AS owner_mail, co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım " +
+                string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, co.last_name AS owner_lastname, co.phone AS owner_phone, co.mail AS owner_mail, co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım, cm.Next_Maintenance AS Bir_Sonraki_Bakım_Tarihi " +
     $"FROM CarMaintenance cm " +
     $"JOIN Car c ON cm.CarID = c.ID " +
     $"JOIN CarOwner co ON c.OwnerID = co.ID " +
-      $"JOIN Users u ON cm.UserID = u.ID " +
-      $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
+    $"JOIN Users u ON cm.UserID = u.ID " +
+    $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
     $"WHERE cm.status = 0 AND c.nuımber_plate='{plakaFilter}'";
 
                 SqlConnection conn = new SqlConnection(@"Data Source=Matebook16s\MSSQLSERVER01;Initial Catalog=ARUNA; User ID=admin; Password=admin; Integrated Security=True");
@@ -968,12 +953,13 @@ namespace ArunaCarServices
 
         private void past_picturebox_Click(object sender, EventArgs e)
         {
-            string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, co.last_name AS owner_lastname, co.phone AS owner_phone, co.mail AS owner_mail, co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım, cm.Next_Maintenance AS Bir_Sonraki_Bakım_Tarih " +
+            string maintenanceQuery = $"SELECT cm.ID, c.model, cm.Date, c.nuımber_plate, co.first_name, co.last_name AS owner_lastname, co.phone AS owner_phone, co.mail AS owner_mail, " +
+   $"co.adress, CONCAT(u.first_name, ' ', u.last_name) AS Sorumlu_Personel, mn.Maintenance_Name AS Yapılan_Bakım, cm.Next_Maintenance AS Bir_Sonraki_Bakım_Tarihi " +
    $"FROM CarMaintenance cm " +
    $"JOIN Car c ON cm.CarID = c.ID " +
    $"JOIN CarOwner co ON c.OwnerID = co.ID " +
-     $"JOIN Users u ON cm.UserID = u.ID " +
-     $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
+   $"JOIN Users u ON cm.UserID = u.ID " +
+   $"JOIN MaintenanceName mn ON cm.Maintenance = mn.ID " +
    $"WHERE cm.status = 0";
 
             SqlConnection conn = new SqlConnection(@"Data Source=Matebook16s\MSSQLSERVER01;Initial Catalog=ARUNA; User ID = admin; Password = admin; Integrated Security = True");
@@ -993,6 +979,18 @@ namespace ArunaCarServices
             }
 
         }
+
+        private void exit_button_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+
+            // Oluşturulan Form1'ı gösterin
+            form1.Show();
+
+            // Mevcut formu kapat.
+            this.Hide();
+        }
+
     }
 }
 
